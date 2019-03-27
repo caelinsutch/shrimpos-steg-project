@@ -230,47 +230,40 @@ def show_data(gg_master, fl=flag, key1=bin1):
 
 
 def main():
-    print("1.create a hidden data  2. view an existing hidden data")  # added
+    print("1.create a hidden data")  # added
     choice3 = input()  # added
     while (choice3 != '1' and choice3 != '2'):  # while loop added
         print("\n\nWrong input. Enter 1 or 2 or ctrl+c to exit.\n")
         choice3 = input()
-    if choice3 == '2':  # if loop added
-        print("enter file name:")
-        file_name = input()
-        val01 = check_file(file_name)
-        val02 = handle_file(val01)
-        disp_message(val02, file_name)
-    else:
-        info1 = get_data()
-        info2 = hide_data(info1)
-        make_file(info2)
-        key = encrypt_data(bin1)
-        print("the key:\n\n " + key)
-        print("\n\n")
-        print("The data is hidden within the generated text.")
-        print("The text is stored in the file \"secretdata.txt\"")
-        print("Do you want to store the key to decrypt the the message inthe file?")
-        print("Enter 'y' for yes and 'n' for no")
+    info1 = get_data()
+    info2 = hide_data(info1)
+    make_file(info2)
+    key = encrypt_data(bin1)
+    print("the key:\n\n " + key)
+    print("\n\n")
+    print("The data is hidden within the generated text.")
+    print("The text is stored in the file \"secretdata.txt\"")
+    print("Do you want to store the key to decrypt the the message inthe file?")
+    print("Enter 'y' for yes and 'n' for no")
+    choice = input()
+    while (choice != 'y' and choice != 'n'):
+        print("\n\nWrong input. Enter y or n or ctrl+c to exit.\n")
         choice = input()
-        while (choice != 'y' and choice != 'n'):
-            print("\n\nWrong input. Enter y or n or ctrl+c to exit.\n")
-            choice = input()
-        if choice == 'y':
-            put_key(key)
-            print("\nDone.\n\n")
-        else:
-            pass
-        while (True):
-            print("\n\n1.show the text  2.show visualisation  or ctrl+c to exit\n\n")
+    if choice == 'y':
+        put_key(key)
+        print("\nDone.\n\n")
+    else:
+        pass
+    while (True):
+        print("\n\n1.show the text  2.show visualisation  or ctrl+c to exit\n\n")
+        choice2 = input()
+        while (choice2 != '1' and choice2 != '2'):
+            print("\n\nWrong input. Enter 1 or 2 or ctrl+c to exit.\n")
             choice2 = input()
-            while (choice2 != '1' and choice2 != '2'):
-                print("\n\nWrong input. Enter 1 or 2 or ctrl+c to exit.\n")
-                choice2 = input()
-            if choice2 == '1':
-                print(info2)
-            else:
-                print(show_data(info2))
+        if choice2 == '1':
+            print(info2)
+        else:
+            print(show_data(info2))
 
 
 main()
